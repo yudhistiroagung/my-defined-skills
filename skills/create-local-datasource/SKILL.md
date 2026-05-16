@@ -120,23 +120,34 @@ container.register(TodoLocalDatasource.TOKEN, TodoLocalDatasource);
 ## Step 5 — Register the table in AppDatabase
 Open `src/cores/dexie/db-dexie.ts` and add the new table:
 
-1. Declare the table property on the `AppDatabase` class
-2. Add the table name and indexed fields inside `initiate()`
+1. Add the table name and indexed fields inside `initiate()`
 
 ```ts
 // example — add alongside existing tables
 class AppDatabase extends Dexie {
-  todos!: TodoTable;   // 1. declare table property
 
   initiate() {
     this.version(1).stores({
-      todos: '++id, name',   // 2. table name + indexed fields
+      todos: '++id, name',   // 1. table name + indexed fields
     });
   }
 }
 ```
 
 > `TABLE_NAME` in `db/index.ts` (Step 2) must exactly match the key used here.
+> ONLY add new table name + indexed fields inside `initiate()`. Do NOT declare any table properties on the `AppDatabase` class since we provide them in the DI container.
+
+```ts
+// example — add alongside existing tables
+class AppDatabase extends Dexie {
+
+  initiate() {
+    this.version(1).stores({
+      todos: '++id, name',   // 1. table name + indexed fields
+    });
+  }
+}
+```
 
 ---
 
