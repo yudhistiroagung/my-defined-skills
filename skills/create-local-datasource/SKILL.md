@@ -3,7 +3,7 @@ name: create-local-datasource
 description: >
   Use this skill when creating a NEW local datasource in the data layer.
   This sets up a Dexie-backed local datasource: datasource interface, DB table config,
-  local datasource class, and all DI container registrations.
+  local datasource class, unit test file, and all DI container registrations.
   Triggers: "create local datasource", "add local DB source", "scaffold local data", "new dexie table".
   Do NOT use for remote datasources (use `create-remote-datasource`) or
   repository implementation (use `create-repository-implementation`).
@@ -16,11 +16,12 @@ Creates a complete local datasource backed by Dexie (IndexedDB).
 The structure produced:
 ```
 src/data/{data-name}/datasources/
-├── {data-name}-datasource.ts         # shared datasource interface
+├── {data-name}-datasource.ts                 # shared datasource interface
 └── local/
     ├── db/
-    │   └── index.ts                  # Dexie table config + DI token
-    └── {data-name}-local-datasource.ts  # implementation class
+    │   └── index.ts                          # Dexie table config + DI token
+    ├── {data-name}-local-datasource.ts       # implementation class
+    └── {data-name}-local-datasource.test.ts  # test file
 ```
 
 ---
@@ -90,12 +91,15 @@ export class TodoLocalDatasource implements TodoDataSource<TodoEntity> {
 }
 ```
 
+## Step 4 — Create the unit test file
+Create `src/data/{data-name}/datasources/local/{data-name}-local-datasource.test.ts`. and implement the test cases.
+
 ---
 
-## Step 4 — Register in the DI container
+## Step 5 — Register in the DI container
 Add both registrations to `src/data/di/index.ts`.
 
-**4a — Register the Dexie table:**
+**5a — Register the Dexie table:**
 ```ts
 import { container } from 'tsyringe';
 import { AppDatabase } from '@/cores/dexie/db-dexie';
@@ -106,7 +110,7 @@ container.register(
 );
 ```
 
-**4b — Register the datasource implementation:**
+**5b — Register the datasource implementation:**
 ```ts
 import { TodoLocalDatasource } from '../todos/datasources/local/todo-local-datasource';
 
@@ -136,18 +140,6 @@ class AppDatabase extends Dexie {
 
 > `TABLE_NAME` in `db/index.ts` (Step 2) must exactly match the key used here.
 > ONLY add new table name + indexed fields inside `initiate()`. Do NOT declare any table properties on the `AppDatabase` class since we provide them in the DI container.
-
-```ts
-// example — add alongside existing tables
-class AppDatabase extends Dexie {
-
-  initiate() {
-    this.version(1).stores({
-      todos: '++id, name',   // 1. table name + indexed fields
-    });
-  }
-}
-```
 
 ---
 

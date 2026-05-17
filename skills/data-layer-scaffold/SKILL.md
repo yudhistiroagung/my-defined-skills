@@ -69,3 +69,6 @@ Example:
 export const productEntityDomain = (entity: ProductEntity): Product => ({ ... });
 export const productDtoDomain = (entity: ProductEntity): Product => ({ ... });
 ```
+
+**Step 6 - Create unit test for mapper functions**
+Create `src/data/{data-name}/mappers/{name}-mapper.test.ts`. and implement the test cases.
