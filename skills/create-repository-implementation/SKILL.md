@@ -28,7 +28,7 @@ Create `src/data/{data-name}/{data-name}-repository-impl.ts`.
 - Decorate with `@singleton()`
 - Implement the domain interface from `src/domain/{data-name}/{data-name}-repository.ts`
 - Inject datasources via constructor using their `.TOKEN`, 
-- create static field for repository TOKEN, e.g. `ProductRepositoryImpl.TOKEN = {data-name}Repository.TOKEN`
+- create static field for repository implementation TOKEN, e.g. `ProductRepositoryImpl.TOKEN = {data-name}Repository.TOKEN`
 
 ```ts
 // src/data/products/product-repository-impl.ts

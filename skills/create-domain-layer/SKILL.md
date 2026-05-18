@@ -43,6 +43,7 @@ export type Product = z.infer<typeof Product>;
 
 **Step 3 — Create repository interface and TOKEN namespace**
 Define the contract in `{name}-repository.ts`. This is an **interface only** — no implementation here.
+Define TOKEN namespace in the same file for dependency injection.
 
 ```ts
 // src/domain/products/product-repository.ts

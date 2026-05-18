@@ -20,7 +20,8 @@ data layer implementations directly.
 The file produced:
 ```
 src/domain/{domain-name}/usecases/
-└── {action}-{domain-name}.ts      # e.g. get-product-by-id.ts
+└── {action}-{domain-name}.ts           # e.g. get-product-by-id.ts
+└── {action}-{domain-name}.test.ts      # e.g. get-product-by-id.test.ts
 ```
 
 ---
@@ -104,18 +105,22 @@ export default {
 ```
 ---
 
-## Step 5 — Use in a custom hooks
-
-Inject and call the use case from a custom hook via exported instance:
+## Step 5 — create unit test for the use case class
 
 ```ts
-import di from '@/di';
+import { GetProductById } from '../usecases/get-product-by-id';
 
-const product = await di.usecases.getProductById.run({ id: '123' });
+describe('GetProductById', () => {
+  it('should return the product by ID', async () => {
+    const usecase = new GetProductById(new MockProductRepositoryImpl());
+
+    const product = await usecase.run({ id: '123' });
+
+    expect(product).toBeDefined();
+    expect(product.id).toBe('123');
+  });
+});
 ```
-
-> Use cases are called from the presentation layer (hooks), never directly from UI components. The presenter hook is the only consumer.
-
 ---
 
 ## Common patterns
