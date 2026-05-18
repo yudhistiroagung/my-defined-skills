@@ -17,12 +17,13 @@ task until the current one is explicitly confirmed done by the user.
 
 ## Core Rules
 
-1. **One task at a time.** Never start a second task while one is `in_progress`.
-2. **Dependency guardrail.** A task can only be picked if ALL its `depends_on` tasks
+1. **Scan existing codebase.** use skill `codebase-scan` before starting any task.
+2. **One task at a time.** Never start a second task while one is `in_progress`.
+3. **Dependency guardrail.** A task can only be picked if ALL its `depends_on` tasks
    are `✅ done` in `_index.md`. If any dependency is not done, refuse and name the blockers.
-3. **User confirms done.** The agent never self-promotes a task to `done`.
+4. **User confirms done.** The agent never self-promotes a task to `done`.
    Only mark `done` when the user explicitly says so.
-4. **Status lives in `_index.md` only.** Never edit the status inside a task file.
+5. **Status lives in `_index.md` only.** Never edit the status inside a task file.
 
 ---
 

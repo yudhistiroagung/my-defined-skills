@@ -106,6 +106,7 @@ export default {
 ---
 
 ## Step 5 — create unit test for the use case class
+Create the file at `src/domain/{domain-name}/usecases/{action}-{domain-name}.test.ts`:
 
 ```ts
 import { GetProductById } from '../usecases/get-product-by-id';
