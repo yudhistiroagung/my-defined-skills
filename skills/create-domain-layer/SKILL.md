@@ -41,7 +41,7 @@ export const Product = z.object({
 export type Product = z.infer<typeof Product>;
 ```
 
-**Step 3 — Create repository interface**
+**Step 3 — Create repository interface and TOKEN namespace**
 Define the contract in `{name}-repository.ts`. This is an **interface only** — no implementation here.
 
 ```ts
@@ -53,6 +53,10 @@ export interface ProductRepository {
   create(product: Product): Promise<Product>;
   update(product: Product): Promise<Product>;
   delete(id: string): Promise<void>;
+}
+
+export namespace ProductRepository {
+  export const TOKEN = 'ProductRepository';
 }
 ```
 
