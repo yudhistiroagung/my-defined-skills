@@ -1,7 +1,7 @@
 ---
 name: create-domain-layer
 description: >
-  Use this skill when creating a NEW domain layer for the project.
+  MUST use this skill when creating a new/refactoring domain layer for the project.
   This sets up the full domain layer structure: folder, Zod domain models, usecases, and repository interface (contract).
   Triggers: "create domain layer", "add new domain", "scaffold domain", "new domain model".
   Do NOT use for data layer, repository implementation, or UI layer.
@@ -26,7 +26,7 @@ src/domain/{domain-name}/
 Create `src/domain/{domain-name}/`.
 
 **Step 2 — Define domain model** (in `models/`)
-Use Zod Schema. The domain model is the **single source of truth** for this feature — it is not tied to local DB or remote API shape.
+Must use Zod Schema. The domain model is the **single source of truth** for this feature — it is not tied to local DB or remote API shape.
 
 ```ts
 // src/domain/products/models/product.ts

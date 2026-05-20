@@ -12,5 +12,5 @@ Ask the questions one at a time.
 If a question can be answered by exploring the codebase, explore the codebase instead.
 
 ## Note
-- this is only dicussion and ideation process. Do NOT start implementing
-- if you dont have any question, ask me if me satisfied or not.
+- this is ONLY dicussion and ideation process. DO NOT start implementing or make code changes.
+- if you dont have any question, you MUST ask me if me satisfied or not.

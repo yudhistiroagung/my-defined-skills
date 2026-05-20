@@ -63,11 +63,18 @@ Follow the linked skill: `create-repository-implementation`
 In `mapper/{name}-mapper.ts`, write functions to convert:
 - entity ↔ domain model
 - dto ↔ domain model
+- must use `parse` method from Zod to validate the model.
 
 Example:
 ```ts
-export const productEntityDomain = (entity: ProductEntity): Product => ({ ... });
-export const productDtoDomain = (entity: ProductEntity): Product => ({ ... });
+export const productEntityDomain = (entity: ProductEntity): Product => {
+  const mapped = { ... } // mapping here
+  return Product.parse(mapped); // validate and return domain model
+}
+export const productDtoDomain = (entity: ProductEntity): Product => {
+  const mapped = { ... } // mapping here
+  return ProductDto.parse(mapped); // validate and return dto model
+}
 ```
 
 **Step 6 - Create unit test for mapper functions**

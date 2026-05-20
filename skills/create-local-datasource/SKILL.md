@@ -1,7 +1,7 @@
 ---
 name: create-local-datasource
 description: >
-  Use this skill when creating a NEW local datasource in the data layer.
+  MUST use this skill when creating a new/refactoring local datasource in the data layer.
   This sets up a Dexie-backed local datasource: datasource interface, DB table config,
   local datasource class, unit test file, and all DI container registrations.
   Triggers: "create local datasource", "add local DB source", "scaffold local data", "new dexie table".
@@ -92,7 +92,7 @@ export class TodoLocalDatasource implements TodoDataSource<TodoEntity> {
 ```
 
 ## Step 4 — Create the unit test file
-Create `src/data/{data-name}/datasources/local/{data-name}-local-datasource.test.ts`. and implement the test cases.
+Must create `src/data/{data-name}/datasources/local/{data-name}-local-datasource.test.ts`. and implement the test cases.
 
 ---
 

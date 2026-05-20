@@ -59,7 +59,7 @@ export class ProductRepositoryImpl implements ProductRepository {
 ```
 
 **Step 2 — Create the unit test file**
-Create `src/data/{data-name}/{data-name}-repository-impl.test.ts`. and implement the test cases.
+Must create `src/data/{data-name}/{data-name}-repository-impl.test.ts`. and implement the test cases.
 
 > Inject only the datasources this repository actually uses.
 > Not all repositories need both local and remote.
